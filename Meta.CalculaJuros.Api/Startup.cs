@@ -1,13 +1,15 @@
 using Meta.CalculaJuros.Domain.Handlers;
-using Meta.CalculaJuros.Domain.Handlers.Interfaces;
-using Meta.CalculaJuros.Domain.Services;
-using Meta.CalculaJuros.Infra.Services;
+using Meta.CalculaJuros.Domain.ServicesRepository;
+using Meta.CalculaJuros.Infra.ServicesRepository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace Meta.CalculaJuros.Api
 {
@@ -24,12 +26,26 @@ namespace Meta.CalculaJuros.Api
         {
 
             services.AddTransient<ITaxaJurosService, TaxaJurosService>();
-            services.AddTransient<ICalculaJurosHandler, CalculaJurosHandler>();
+            services.AddTransient<CalculaJurosHandler, CalculaJurosHandler>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Meta.CalculaJuros.Api", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo {
+                    Version = "v1",
+                    Title = "Desafio Meta - API Calcula Juros", 
+                    Description = "Desafio Meta - API Calcula Juros",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "André Machado",
+                        Email = "mtz.andremachado@gmail.com"
+                    }
+                });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+
             });
         }
 
@@ -39,7 +55,7 @@ namespace Meta.CalculaJuros.Api
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Meta.CalculaJuros.Api v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Meta CalculaJuros - v1"));
             }
 
             app.UseRouting();

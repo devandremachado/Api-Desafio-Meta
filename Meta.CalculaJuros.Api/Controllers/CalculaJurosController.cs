@@ -1,5 +1,5 @@
 ﻿using Meta.CalculaJuros.Domain.Commands.Requests;
-using Meta.CalculaJuros.Domain.Handlers.Interfaces;
+using Meta.CalculaJuros.Domain.Handlers;
 using Meta.CalculaJuros.Shared.Commands;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,19 +12,22 @@ namespace Meta.CalculaJuros.Api.Controllers
     [ApiController]
     public class CalculaJurosController : ControllerBase
     {
-        private readonly ICalculaJurosHandler _handler;
+        private readonly CalculaJurosHandler _handler;
 
-        public CalculaJurosController(ICalculaJurosHandler handler)
+        public CalculaJurosController(CalculaJurosHandler handler)
         {
             _handler = handler;
         }
 
+        /// <summary>
+        /// Calcula o juros composto
+        /// </summary>
         [HttpGet]
-        public async Task<IActionResult> GetTaxaJuros(double valorInicial, int meses)
+        public async Task<IActionResult> CalculaJuros(double valorInicial, int meses)
         {
             try
             {
-                var request = new JurosCompostoRequest(valorInicial, meses);
+                var request = new JurosCompostoCommand(valorInicial, meses);
                 var result = await _handler.Handle(request);
 
                 if (result.Sucesso == false) return BadRequest(result);

@@ -9,13 +9,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API 1", "API 1", "{FD1F7CD7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API 2", "API 2", "{8E12116B-C840-4297-9E94-90C729448990}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meta.TaxaJuros.Api", "Meta.TaxaJuros.Api\Meta.TaxaJuros.Api.csproj", "{8807451F-845F-4E89-8A0A-4B4C3FC951C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meta.TaxaJuros.Api", "Meta.TaxaJuros.Api\Meta.TaxaJuros.Api.csproj", "{8807451F-845F-4E89-8A0A-4B4C3FC951C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meta.CalculaJuros.Domain", "Meta.CalculaJuros.Domain\Meta.CalculaJuros.Domain.csproj", "{CE8C0A5F-AB55-4F28-A4A9-D77DCCB09556}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meta.CalculaJuros.Domain", "Meta.CalculaJuros.Domain\Meta.CalculaJuros.Domain.csproj", "{CE8C0A5F-AB55-4F28-A4A9-D77DCCB09556}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meta.CalculaJuros.Shared", "Meta.CalculaJuros.Shared\Meta.CalculaJuros.Shared.csproj", "{FFDE1EA8-AA3F-4AFF-9ACB-9FC0D37FDDD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meta.CalculaJuros.Shared", "Meta.CalculaJuros.Shared\Meta.CalculaJuros.Shared.csproj", "{FFDE1EA8-AA3F-4AFF-9ACB-9FC0D37FDDD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meta.CalculaJuros.Infra", "Meta.CalculaJuros.Infra\Meta.CalculaJuros.Infra.csproj", "{BF2E2A5C-C811-48A7-B384-6206AF95E939}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meta.CalculaJuros.Infra", "Meta.CalculaJuros.Infra\Meta.CalculaJuros.Infra.csproj", "{BF2E2A5C-C811-48A7-B384-6206AF95E939}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meta.CalculaJuros.Tests", "Meta.CalculaJuros.Tests\Meta.CalculaJuros.Tests.csproj", "{6C4586F4-31FB-4462-99DF-82791236AE19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{BF2E2A5C-C811-48A7-B384-6206AF95E939}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF2E2A5C-C811-48A7-B384-6206AF95E939}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF2E2A5C-C811-48A7-B384-6206AF95E939}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C4586F4-31FB-4462-99DF-82791236AE19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C4586F4-31FB-4462-99DF-82791236AE19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C4586F4-31FB-4462-99DF-82791236AE19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C4586F4-31FB-4462-99DF-82791236AE19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{CE8C0A5F-AB55-4F28-A4A9-D77DCCB09556} = {8E12116B-C840-4297-9E94-90C729448990}
 		{FFDE1EA8-AA3F-4AFF-9ACB-9FC0D37FDDD3} = {8E12116B-C840-4297-9E94-90C729448990}
 		{BF2E2A5C-C811-48A7-B384-6206AF95E939} = {8E12116B-C840-4297-9E94-90C729448990}
+		{6C4586F4-31FB-4462-99DF-82791236AE19} = {8E12116B-C840-4297-9E94-90C729448990}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {55347C75-421A-449E-804D-5931770DB4BE}

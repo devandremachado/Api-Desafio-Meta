@@ -7,6 +7,9 @@ namespace Meta.CalculaJuros.Api.Controllers
     [ApiController]
     public class ShowmeTheCodeController : ControllerBase
     {
+        /// <summary>
+        /// Retorna URL do projeto no github
+        /// </summary>
         [HttpGet]
         public IActionResult GetPerfil()
         {

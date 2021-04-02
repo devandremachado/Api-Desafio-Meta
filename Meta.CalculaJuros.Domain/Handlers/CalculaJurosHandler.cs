@@ -1,19 +1,15 @@
 ﻿using FluentValidator;
 using Meta.CalculaJuros.Domain.Commands.Requests;
 using Meta.CalculaJuros.Domain.Entities;
-using Meta.CalculaJuros.Domain.Handlers.Interfaces;
-using Meta.CalculaJuros.Domain.Services;
+using Meta.CalculaJuros.Domain.ServicesRepository;
 using Meta.CalculaJuros.Shared.Commands;
 using Meta.CalculaJuros.Shared.Commands.Interfaces;
 using System;
-using System.Globalization;
 using System.Threading.Tasks;
 
 namespace Meta.CalculaJuros.Domain.Handlers
 {
-    public class CalculaJurosHandler :
-        Notifiable,
-        ICalculaJurosHandler
+    public class CalculaJurosHandler : Notifiable, ICommandHandler<JurosCompostoCommand>
     {
         private readonly ITaxaJurosService _taxaJurosService;
 
@@ -22,25 +18,22 @@ namespace Meta.CalculaJuros.Domain.Handlers
             _taxaJurosService = taxaJurosService;
         }
 
-        public async Task<ICommandResponse> Handle(JurosCompostoRequest request)
+        public async Task <ICommandResponse> Handle(JurosCompostoCommand command)
         {
-            request.Validar();
+            command.Validar();
+            if (command.Invalid)
+                return new CommandResponseError("Parâmetros inválidos", command.Notifications);
 
-            if (request.Invalid)
-            {
-                return new CommandResponseError("Por favor, corrija os campos abaixo", request.Notifications);
-            }
+            var taxa = await _taxaJurosService.ObterTaxaJuros();
 
-            double taxa = await _taxaJurosService.ObterTaxaJuros();
+            var juros = new JurosComposto(command.Valor, command.Meses, taxa);
 
-            var juros = new JurosComposto(request.Valor, request.Meses, taxa);
+            AddNotifications(juros.Notifications);
+            if (Invalid)
+                return new CommandResponseError("Por favor, corrija os campos abaixo", juros.Notifications);
 
             var resultado = Math.Truncate(juros.Calcular() * 100) / 100;
-
-            return new CommandResponseSuccess(new
-            {
-                Valor = resultado.ToString("0.00")
-            });
+            return new CommandResponseSuccess(new { Valor = resultado.ToString("0.00") });
         }
     }
 }

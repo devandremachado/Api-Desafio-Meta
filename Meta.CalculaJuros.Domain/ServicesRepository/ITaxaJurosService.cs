@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Meta.CalculaJuros.Domain.Services
+namespace Meta.CalculaJuros.Domain.ServicesRepository
 {
     public interface ITaxaJurosService
     {

@@ -4,9 +4,9 @@ using Meta.CalculaJuros.Shared.Commands.Interfaces;
 
 namespace Meta.CalculaJuros.Domain.Commands.Requests
 {
-    public class JurosCompostoRequest : Notifiable, ICommand
+    public class JurosCompostoCommand : Notifiable, ICommand
     {
-        public JurosCompostoRequest(double valor, int meses)
+        public JurosCompostoCommand(double valor, int meses)
         {
             Valor = valor;
             Meses = meses;

@@ -1,9 +1,9 @@
-﻿using Meta.CalculaJuros.Domain.Services;
+﻿using Meta.CalculaJuros.Domain.ServicesRepository;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Meta.CalculaJuros.Infra.Services
+namespace Meta.CalculaJuros.Infra.ServicesRepository
 {
     public class TaxaJurosService : ITaxaJurosService
     {
