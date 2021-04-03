@@ -5,6 +5,7 @@ using Meta.CalculaJuros.Domain.ServicesRepository;
 using Meta.CalculaJuros.Shared.Commands;
 using Meta.CalculaJuros.Shared.Commands.Interfaces;
 using System;
+using System.Globalization;
 using System.Threading.Tasks;
 
 namespace Meta.CalculaJuros.Domain.Handlers
@@ -33,7 +34,8 @@ namespace Meta.CalculaJuros.Domain.Handlers
                 return new CommandResponseError("Por favor, corrija os campos abaixo", juros.Notifications);
 
             var resultado = Math.Truncate(juros.Calcular() * 100) / 100;
-            return new CommandResponseSuccess(new { Valor = resultado.ToString("0.00") });
+
+            return new CommandResponseSuccess(new { Valor = string.Format(CultureInfo.InvariantCulture, "{0:0.00}", resultado) });
         }
     }
 }

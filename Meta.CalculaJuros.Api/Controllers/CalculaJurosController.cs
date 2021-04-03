@@ -36,7 +36,7 @@ namespace Meta.CalculaJuros.Api.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode((int)HttpStatusCode.InternalServerError, new CommandResponseError("Ocorreu um erro inesperado", ex.Message));
+                return StatusCode((int)HttpStatusCode.InternalServerError, new CommandResponseError("Ocorreu um erro inesperado. Verifique se a API 1 está em execução.", ex.Message));
             }
         }
     }
